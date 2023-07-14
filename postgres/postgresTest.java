@@ -10,6 +10,8 @@
 
 //JAVA 17
 
+//FILES ../logback-test.xml
+
 import org.junit.platform.launcher.Launcher;
 import org.junit.platform.launcher.LauncherDiscoveryRequest;
 import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;

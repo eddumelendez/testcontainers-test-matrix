@@ -10,6 +10,8 @@
 
 //JAVA 17
 
+//FILES ../logback-test.xml
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.platform.launcher.Launcher;
