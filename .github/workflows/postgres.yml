@@ -1,0 +1,26 @@
+name: postgres
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  jbang:
+    name: Run Postgres tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: /root/.jbang
+          key: $-jbang-$
+          restore-keys: |
+            $-jbang-
+      - name: jbang
+        uses: jbangdev/jbang-action@v0.109.0
+        with:
+          script: postgres/postgresTest.java
+        env:
+          JBANG_REPO: /root/.jbang/repository
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
