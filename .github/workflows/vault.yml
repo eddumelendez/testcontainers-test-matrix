@@ -11,16 +11,13 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
-      - uses: actions/cache@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
         with:
-          path: /root/.jbang
-          key: $-jbang-$
-          restore-keys: |
-            $-jbang-
-      - name: jbang
-        uses: jbangdev/jbang-action@v0.109.0
-        with:
-          script: vault/vaultTest.java
-        env:
-          JBANG_REPO: /root/.jbang/repository
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          java-version: 17
+          distribution: temurin
+      - name: Setup JBang
+        uses: jbangdev/setup-jbang@v0.1.1
+      - name: Run test
+        run: |
+          jbang vault/vaultTest.java
